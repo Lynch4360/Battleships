@@ -12,6 +12,7 @@ def get_shot():
                 break
         except:
             print("please enter again")
+            
     return shot
 
 
@@ -39,6 +40,6 @@ def show_board(hit, miss, comp):
 hit = [21, 22, 23]
 miss = [20, 24, 12, 13]
 comp = [23]
-
+guesses = hit + miss + comp
 shot = get_shot()
 show_board(hit, miss, comp)
