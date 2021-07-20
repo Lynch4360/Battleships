@@ -20,6 +20,29 @@ def check_ok(boat, occupied):
     return boat
 
 
+def get_ship(boat, taken):
+
+    #ask user to enter numbers
+    # check that ship
+
+    return ship
+
+
+def create_ships():
+    occupied = []
+    ships = []
+    boats = [5, 4, 3, 3, 3, 2]
+
+    for boat in boats:
+        ship = get_ship(boat, occupied)
+        ships.append(ship)
+
+    return ships
+
+
+ships = create_ships()
+
+
 def check_boat(b, start, dirn, occupied):
     boat = []
     if dirn == 1:
@@ -205,6 +228,9 @@ for i in range(80):
     elif len(strategy) > 0:
         strategy.pop(0)
 
+    if check_if_empty_2(ships):
+        print("end of game", i)
+        break
 
 show_board_c(occupied)
 show_board(hit, miss, sink)
