@@ -41,20 +41,47 @@ def check_boat(b, start, dirn, occupied):
     return boat
 
 
-occupied = []
-ships = []
-boats = [5, 4, 3, 3, 3, 2]
-for b in boats:
-    boat = [-1]
-    while boat[0] == -1:
-        boat_start = randrange(99)
-        boat_direction = randrange(1, 4)
-        print(b, boat_start, boat_direction)
-        boat = check_boat(b, boat_start, boat_direction, occupied)
-    ships.append(boat)
-    print(ships)
+def create_boats():
+    occupied = []
+    ships = []
+    boats = [5, 4, 3, 3, 3, 2]
+    for b in boats:
+        boat = [-1]
+        while boat[0] == -1:
+            boat_start = randrange(99)
+            boat_direction = randrange(1, 4)
+            print(b, boat_start, boat_direction)
+            boat = check_boat(b, boat_start, boat_direction, occupied)
+        ships.append(boat)
+        occupied = occupied + boat
+        print(ships)
+
+    return ships, occupied
 
 
+def show_board(occupied):
+    print("            Battleships       ")
+    print("     0  1  2  3  4  5  6  7  8  9")
+
+    place = 0
+    for x in range(10):
+        row = ""
+        for y in range(10):
+            ch = " _ "
+            if place in occupied:
+                ch = " x "
+            # elif place in hit:
+            #     ch = " o "
+            # elif place in sink:
+            #     ch = " O "
+
+            row = row + ch
+            place = place + 1
+        print(x, " ", row)
+
+
+boats, occupied = create_boats()
+show_board(occupied)
 # def get_shot(guesses):
 
 #     ok = "n"
@@ -76,25 +103,6 @@ for b in boats:
 #     return shot
 
 
-# def show_board(hit, miss, sink):
-#     print("            Battleships       ")
-#     print("     0  1  2  3  4  5  6  7  8  9")
-
-#     place = 0
-#     for x in range(10):
-#         row = ""
-#         for y in range(10):
-#             ch = " _ "
-#             if place in miss:
-#                 ch = " x "
-#             elif place in hit:
-#                 ch = " o "
-#             elif place in sink:
-#                 ch = " O "
-
-#             row = row + ch
-#             place = place + 1
-#         print(x, " ", row)
 
 
 # def check_shot(shot, boat1, boat2, hit, miss, sink):
