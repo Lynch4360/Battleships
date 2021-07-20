@@ -151,13 +151,27 @@ def calc_strategy(shot, strategy, guesses, hit):
         temp = [shot-1, shot+1, shot-10, shot+10]
     else:
         if shot-1 in hit:
-            temp = [shot-2, shot+1]
+            if shot-2 in hit:
+                temp = [shot-3, shot+1]
+            else:
+                temp = [shot-2, shot+1]
         elif shot+1 in hit:
-            temp = [shot+2, shot-1]
+            if shot-2 in hit:
+                temp = [shot+3, shot-1]
+            else:
+                temp = [shot+2, shot-1]
         elif shot-10 in hit:
-            temp = [shot-20, shot+10]
+            if shot-2 in hit:
+                temp = [shot-30, shot+10]
+            else: 
+                temp = [shot-20, shot+10]
         elif shot+10 in hit:
-            temp = [shot+20, shot-10]
+            if shot-2 in hit:
+                temp = [shot+30, shot-10]
+            else:
+                temp = [shot+20, shot-10]
+
+            
 
     cand = []
     for i in range(len(temp)):
@@ -178,16 +192,20 @@ ships, occupied = create_boats()
 show_board_c(occupied)
 strategy = []
 
-for i in range(50):
+for i in range(80):
     shot, guesses = get_shot_comp(guesses, strategy)
     ships, hit, miss, comp, missed = check_shot(shot, ships, hit, miss, sink)
     show_board(hit, miss, sink)
     if missed == 1:
-        strategy = calc_strategy(shot, strategy, guesses)
+        strategy = calc_strategy(shot, strategy, guesses, hit)
     elif missed == 2:
         strategy = []
     elif len(strategy) > 0:
         strategy.pop(0)
+
+
+show_board_c(occupied)
+show_board(hit, miss, sink)
 
 
 
