@@ -170,9 +170,7 @@ def calc_strategy(shot, strategy, guesses, hit):
                 temp = [shot+30, shot-10]
             else:
                 temp = [shot+20, shot-10]
-
-            
-
+       
     cand = []
     for i in range(len(temp)):
         if temp[i] not in guesses and temp[i] < 100 and temp[i] > -1:
@@ -181,6 +179,10 @@ def calc_strategy(shot, strategy, guesses, hit):
     random.shuffle(cand)
 
     return cand
+
+
+def check_if_empty_2(list_of_lists):
+    return all([not elem for elem in list_of_lists])
 
 
 hit = []
@@ -206,9 +208,6 @@ for i in range(80):
 
 show_board_c(occupied)
 show_board(hit, miss, sink)
-
-
-
 
 # boat2 = [6, 16, 26]
 # boat1 = [45, 46, 47]
