@@ -1,32 +1,58 @@
 from random import randrange
 
 
-def check_boat(b, start, dirn):
+def check_ok(boat, occupied):
+    
+    for i in range(len(boat)):
+        num = boat[i]
+        if num in occupied:
+            boat = [-1]
+            break
+        elif num < 0 or num > 99:
+            boat = [-1]
+            break
+        elif num % 9 == 0 and i < len(boat) - 1:
+            if boat[i+1] % 10 == 0:
+                boat = [-1]
+                break
+
+    return boat
+
+
+def check_boat(b, start, dirn, occupied):
     boat = []
     if dirn == 1:
         for i in range(b):
             boat.append(start - i*10)
-            print(start - i*10)
+            boat = check_ok(boat, occupied)
     elif dirn == 2:
         for i in range(b):
             boat.append(start + i)
-            print(start + i)
+            boat = check_ok(boat, occupied)
     elif dirn == 3:
         for i in range(b):
             boat.append(start + i*10)
-            print(start + i*10)
+            boat = check_ok(boat, occupied)
     elif dirn == 4:
         for i in range(b):
             boat.append(start - i)
-            print(start - i)
+            boat = check_ok(boat, occupied)
+
+    return boat
 
 
-boats = [5, 4, 3, 3, 2, 2]
+occupied = []
+ships = []
+boats = [5, 4, 3, 3, 3, 2]
 for b in boats:
-    boat_start = randrange(99)
-    boat_direction = randrange(1, 4)
-    print(b, boat_start, boat_direction)
-    check_boat(b, boat_start, boat_direction)
+    boat = [-1]
+    while boat[0] == -1:
+        boat_start = randrange(99)
+        boat_direction = randrange(1, 4)
+        print(b, boat_start, boat_direction)
+        boat = check_boat(b, boat_start, boat_direction, occupied)
+    ships.append(boat)
+    print(ships)
 
 
 # def get_shot(guesses):
