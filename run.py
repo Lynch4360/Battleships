@@ -145,11 +145,20 @@ def check_shot(shot, ships, hit, miss, sink):
     return ships, hit, miss, sink, missed
 
 
-def calc_strategy(shot, strategy, guesses):
+def calc_strategy(shot, strategy, guesses, hit):
     
     if len(strategy) < 1:
         temp = [shot-1, shot+1, shot-10, shot+10]
-    # strategy longer
+    else:
+        if shot-1 in hit:
+            temp = [shot-2, shot+1]
+        elif shot+1 in hit:
+            temp = [shot+2, shot-1]
+        elif shot-10 in hit:
+            temp = [shot-20, shot+10]
+        elif shot+10 in hit:
+            temp = [shot+20, shot-10]
+
     cand = []
     for i in range(len(temp)):
         if temp[i] not in guesses and temp[i] < 100 and temp[i] > -1:
