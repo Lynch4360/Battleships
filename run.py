@@ -70,40 +70,58 @@ def show_board_c(occupied):
             ch = " _ "
             if place in occupied:
                 ch = " o "
-            # elif place in hit:
-            #     ch = " o "
-            # elif place in sink:
-            #     ch = " O "
 
             row = row + ch
             place = place + 1
         print(x, " ", row)
 
 
+def show_board(hit, miss, comp):
+    print("            Battleships       ")
+    print("     0  1  2  3  4  5  6  7  8  9")
+
+    place = 0
+    for x in range(10):
+        row = ""
+        for y in range(10):
+            ch = " _ "
+            if place in miss:
+                ch = " x "
+            elif place in hit:
+                ch = " o "
+            elif place in sink:
+                ch = " O "
+
+            row = row + ch
+            place = place + 1
+        print(x, " ", row)
+
+
+def get_shot_comp(guesses):
+
+    ok = "n"
+    while ok == "n":
+        try:
+            shot = randrange(99)
+            if shot not in guesses:
+                ok = "y"
+                guesses.append(shot)
+                break
+        except:
+            print("Incorrect entry - please enter again")
+
+    return shot, guesses
+
+
+hit = []
+miss = []
+comp = []
+guesses = []
+
 boats, occupied = create_boats()
 show_board_c(occupied)
-# def get_shot(guesses):
-
-#     ok = "n"
-#     while ok == "n":
-#         try:
-#             shot = input("please enter your guess")
-#             shot = int(shot)
-#             if shot < 0 or shot > 99:
-#                 print("incorrect number, please try again")
-#             elif shot in guesses:
-#                 print("incorrect number, please try again")
-
-#             else:
-#                 ok = "y"
-#                 break
-#         except:
-#             print("please enter again")
-
-#     return shot
-
-
-
+shot, guesses = get_shot_comp(guesses)
+show_board(hit, miss, comp)
 
 # def check_shot(shot, boat1, boat2, hit, miss, sink):
 
