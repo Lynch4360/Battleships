@@ -1,3 +1,15 @@
+from random import randrange
+
+def check_boat(b, start, dirn):
+
+boats = [5, 4, 3, 3, 2, 2]
+for b in boats:
+    boat_start = randrange(99)
+    boat_direction = randrange(1,4)
+    print(b, boat_start, boat_direction)
+    check_boat(b, boat_start, boat_direction)
+
+
 def get_shot(guesses):
 
     ok = "n"
