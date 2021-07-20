@@ -3,7 +3,7 @@ import random
 
 
 def check_ok(boat, occupied):
-    
+
     boat.sort()
     for i in range(len(boat)):
         num = boat[i]
@@ -18,40 +18,46 @@ def check_ok(boat, occupied):
                 boat = [-1]
                 break
         if i != 0:
-            boat[i+1] != boat[i]+1 or boat[i+1] != boat[i]+10:
+            if boat[i] != boat[i-1]+1 and boat[i] != boat[i-1]+10:
                 boat = [-1]
                 break
 
     return boat
 
 
-def get_ship(long, taken):
+def get_ship(long, occupied):
 
-    ship = []
-    # ask user to enter numbers
-    print("enter your ship")
-    for i in range(long):
-        boat_num = input("please enter a number")
-        ship.append(int(boat_num))
+    ok = True
+    while ok:
+        ship = []
+        # ask user to enter numbers
+        print("enter your ship of length", long)
+        for i in range(long):
+            boat_num = input("please enter a number")
+            ship.append(int(boat_num))
+        # check that ship
+        ship = check_ok(ship, occupied)
+        if ship[0] != -1:
+            occupied = occupied + ship
+            break
+        else:
+            print("error - please try again")
 
-    # check that ship
-    check_ok(ship, occupied)
     return ship
 
 
-def create_ships():
+def create_ships(occupied, boats):
     occupied = []
     ships = []
     boats = [5, 4, 3, 3, 3, 2]
 
     for boat in boats:
-        ship = get_ship(boat, occupied)
+        ship, occupied = get_ship(boat, occupied)
         ships.append(ship)
 
-    return ships
+    ships = create_ships(occupied, boats)
 
-
-ships = create_ships()
+    return ships, occupied
 
 
 def check_boat(b, start, dirn, occupied):
@@ -132,16 +138,6 @@ def show_board(hit, miss, comp):
         print(x, " ", row)
 
 
-# def get_shot_comp(guesses, strategy):
-#     if len(strategy) > 0:
-#         shot = strategy[0]
-#     shot = randrange(99)
-#     elif shot not in guesses:
-#         guesses.append(shot)
-#     else:
-#         print("Already Shot here - please enter again")
-
-#     return shot, guesses
 def get_shot_comp(guesses, strategy):
 
     ok = "n"
@@ -245,20 +241,3 @@ for i in range(80):
 
 show_board_c(occupied)
 show_board(hit, miss, sink)
-
-# boat2 = [6, 16, 26]
-# boat1 = [45, 46, 47]
-# hit = []
-# miss = []
-# sink = []
-
-# for i in range(10):
-#     guesses = hit + miss + sink
-#     shot = get_shot(guesses)
-#     boat1, boat2, hit, miss, sink = check_shot(shot,boat1,boat2,hit,miss,sink)
-#     show_board(hit, miss, sink)
-
-#     if len(boat1) < 1 and len(boat2) < 1:
-#         print("You have Won!")
-#         break
-# print("Finished")
