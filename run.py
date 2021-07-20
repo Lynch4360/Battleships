@@ -113,34 +113,36 @@ def get_shot_comp(guesses):
     return shot, guesses
 
 
+def check_shot(shot, ships, hit, miss, sink):
+
+    missed = 1
+    for i in range(len(ships)):
+        if shot in ships[i]:
+            ships[i].remove(shot)
+            missed = 0
+            if len(ships[i]) > 0:
+                hit.append(shot)
+            else:
+                sink.append(shot)
+    if missed == 1:
+        miss.append(shot)
+
+    return ships, hit, miss, sink
+
+
 hit = []
 miss = []
-comp = []
+sink = []
 guesses = []
 
-boats, occupied = create_boats()
+ships, occupied = create_boats()
 show_board_c(occupied)
+
+
 shot, guesses = get_shot_comp(guesses)
-show_board(hit, miss, comp)
+ships, hit, miss, comp = check_shot(shot, ships, hit, miss, sink)
+show_board(hit, miss, sink)
 
-# def check_shot(shot, boat1, boat2, hit, miss, sink):
-
-#     if shot in boat1:
-#         boat1.remove(shot)
-#         if len(boat1) > 0:
-#             hit.append(shot)
-#         else:
-#             sink.append(shot)
-#     elif shot in boat2:
-#         boat2.remove(shot)
-#         if len(boat2) > 0:
-#             hit.append(shot)
-#         else:
-#             sink.append(shot)
-#     else:
-#         miss.append(shot)
-
-#     return boat1, boat2, hit, miss, sink
 
 
 # boat2 = [6, 16, 26]
