@@ -1,4 +1,5 @@
 from random import randrange
+import random
 
 
 def check_ok(boat, occupied):
@@ -97,12 +98,25 @@ def show_board(hit, miss, comp):
         print(x, " ", row)
 
 
+# def get_shot_comp(guesses, strategy):
+#     if len(strategy) > 0:
+#         shot = strategy[0]
+#     shot = randrange(99)
+#     elif shot not in guesses:
+#         guesses.append(shot)
+#     else:
+#         print("Already Shot here - please enter again")
+
+#     return shot, guesses
 def get_shot_comp(guesses):
 
     ok = "n"
     while ok == "n":
         try:
-            shot = randrange(99)
+            if len(strategy) > 0:
+                shot = strategy[0]
+            else:
+                shot = randrange(99)
             if shot not in guesses:
                 ok = "y"
                 guesses.append(shot)
@@ -115,19 +129,33 @@ def get_shot_comp(guesses):
 
 def check_shot(shot, ships, hit, miss, sink):
 
-    missed = 1
+    missed = 0
     for i in range(len(ships)):
         if shot in ships[i]:
             ships[i].remove(shot)
-            missed = 0
             if len(ships[i]) > 0:
                 hit.append(shot)
+                missed = 1
             else:
                 sink.append(shot)
-    if missed == 1:
+                missed = 2
+    if missed == 0:
         miss.append(shot)
 
-    return ships, hit, miss, sink
+    return ships, hit, miss, sink, missed
+
+
+def calc_strategy(shot, strategy, guesses):
+    
+    if len(strategy) < 1:
+        temp = [shot-1, shot+1, shot-10, shot+10]
+
+    cand = []
+    for i in range(len(temp)):
+        if temp[i] not in guesses and temp[i] < 100 and temp[i] > -1:
+            cand.append(temp[i])
+    random.shuffle[cand]
+    return cand
 
 
 hit = []
@@ -137,11 +165,18 @@ guesses = []
 
 ships, occupied = create_boats()
 show_board_c(occupied)
+strategy = []
 
+for i in range(50):
+    shot, guesses = get_shot_comp(guesses, strategy)
+    ships, hit, miss, comp = check_shot(shot, ships, hit, miss, sink)
+    show_board(hit, miss, sink)
+    if missed == 1:
+        strategy.append(shot)
+        strategy = calc_strategy(shot, strategy, guesses)
+    elif missed == 2:
+        strategy = []
 
-shot, guesses = get_shot_comp(guesses)
-ships, hit, miss, comp = check_shot(shot, ships, hit, miss, sink)
-show_board(hit, miss, sink)
 
 
 
