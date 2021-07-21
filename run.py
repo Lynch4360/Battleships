@@ -174,29 +174,30 @@ def calc_strategy(shot, strategy, guesses, hit):
 
     temp = []
     if len(strategy) < 1:
-        temp = [shot-1, shot+1, shot-10, shot+10]
-    else:
-        if shot-1 in hit:
-            if shot-2 in hit:
-                temp = [shot-3, shot+1]
-            else:
-                temp = [shot-2, shot+1]
-        elif shot+1 in hit:
-            if shot-2 in hit:
-                temp = [shot+3, shot-1]
-            else:
-                temp = [shot+2, shot-1]
-        elif shot-10 in hit:
-            if shot-2 in hit:
-                temp = [shot-30, shot+10]
-            else: 
-                temp = [shot-20, shot+10]
-        elif shot+10 in hit:
-            if shot-2 in hit:
-                temp = [shot+30, shot-10]
-            else:
-                temp = [shot+20, shot-10]
-       
+        temp = [shot+1]
+        for num in [2, 3, 4, 5, 6, 7, 8]:
+            if shot-num not in hit:
+                temp.append(shot+num)
+                break
+    elif shot+1 in hit:
+        temp = [shot-1]
+        for num in [2, 3, 4, 5, 6, 7, 8]:
+            if shot+num not in hit:
+                temp.append(shot+num) 
+                break
+    elif shot-10 in hit:
+        temp = [shot+10]
+        for num in [20, 30, 40, 50, 60, 70, 80]:
+            if shot-num not in hit:
+                temp.append(shot-num)
+                break
+    elif shot+10 in hit:
+        temp = [shot-10]
+        for num in [20, 30, 40, 50, 60, 70, 80]:
+            if shot+num not in hit:
+                temp.append(shot+num)
+                break
+
     cand = []
     for i in range(len(temp)):
         if temp[i] not in guesses and temp[i] < 100 and temp[i] > -1:
@@ -211,12 +212,15 @@ def check_if_empty_2(list_of_lists):
     return all([not elem for elem in list_of_lists])
 
 
+
+occupied = []
 hit = []
 miss = []
 sink = []
 guesses = []
+boats = []
 
-ships, occupied = create_boats()
+ships, occupied = create_boats(occupied, boats)
 show_board_c(occupied)
 strategy = []
 
