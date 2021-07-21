@@ -31,9 +31,9 @@ def get_ship(long, occupied):
     while ok:
         ship = []
         # ask user to enter numbers
-        print("enter your ship of length", long)
+        print("Enter your ship of length", long)
         for i in range(long):
-            boat_num = input("please enter a number")
+            boat_num = input("Please enter a number")
             ship.append(int(boat_num))
         # check that ship
         ship = check_ok(ship, occupied)
@@ -41,9 +41,9 @@ def get_ship(long, occupied):
             occupied = occupied + ship
             break
         else:
-            print("error - please try again")
+            print("Error - please try again")
 
-    return ship
+    return ship, occupied
 
 
 def create_ships(occupied, boats):
