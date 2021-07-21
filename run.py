@@ -104,7 +104,7 @@ def show_board_c(occupied):
     for x in range(10):
         row = ""
         for y in range(10):
-            ch = " _ "
+            ch = " . "
             if place in occupied:
                 ch = " o "
             row = row + ch
@@ -139,7 +139,7 @@ def show_board(hit, miss, sink):
     for x in range(10):
         row = ""
         for y in range(10):
-            ch = " _ "
+            ch = " . "
             if place in miss:
                 ch = " x "
             elif place in hit:
@@ -283,32 +283,3 @@ for i in range(80):
 
     if check_if_empty_2(ships2):
         print("end of game - computer wins", i)
-#         break
-# occupied = []
-# hit = []
-# miss = []
-# sink = []
-# guesses = []
-# boats = []
-
-# ships, occupied = create_boats(occupied, boats)
-# show_board_c(occupied)
-# strategy = []
-
-# for i in range(80):
-#     shot, guesses = get_shot_comp(guesses, strategy)
-#     ships, hit, miss, comp, missed = check_shot(shot, ships, hit, miss, sink)
-#     show_board(hit, miss, sink)
-#     if missed == 1:
-#         strategy = calc_strategy(shot, strategy, guesses, hit)
-#     elif missed == 2:
-#         strategy = []
-#     elif len(strategy) > 0:
-#         strategy.pop(0)
-
-#     if check_if_empty_2(ships):
-#         print("end of game", i)
-#         break
-
-# show_board_c(occupied)
-# show_board(hit, miss, sink)
