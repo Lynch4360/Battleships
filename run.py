@@ -78,8 +78,8 @@ def check_boat(b, start, dirn, occupied):
     return boat
 
 
-def create_boats():
-    occupied = []
+def create_boats(occupied, boats):
+    # occupied = []
     ships = []
     boats = [5, 4, 3, 3, 3, 2]
     for b in boats:
