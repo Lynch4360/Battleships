@@ -107,28 +107,6 @@ def show_board_c(occupied):
             ch = " _ "
             if place in occupied:
                 ch = " o "
-
-            row = row + ch
-            place = place + 1
-        print(x, " ", row)
-
-
-def show_board(hit, miss, comp):
-    print("            Battleships       ")
-    print("     0  1  2  3  4  5  6  7  8  9")
-
-    place = 0
-    for x in range(10):
-        row = ""
-        for y in range(10):
-            ch = " _ "
-            if place in miss:
-                ch = " x "
-            elif place in hit:
-                ch = " o "
-            elif place in sink:
-                ch = " O "
-
             row = row + ch
             place = place + 1
         print(x, " ", row)
@@ -153,6 +131,27 @@ def get_shot_comp(guesses, strategy):
     return shot, guesses
 
 
+def show_board(hit, miss, sink):
+    print("            Battleships       ")
+    print("     0  1  2  3  4  5  6  7  8  9")
+
+    place = 0
+    for x in range(10):
+        row = ""
+        for y in range(10):
+            ch = " _ "
+            if place in miss:
+                ch = " x "
+            elif place in hit:
+                ch = " o "
+            elif place in sink:
+                ch = " O "
+
+            row = row + ch
+            place = place + 1
+        print(x, " ", row)
+
+
 def check_shot(shot, ships, hit, miss, sink):
 
     missed = 0
@@ -172,7 +171,8 @@ def check_shot(shot, ships, hit, miss, sink):
 
 
 def calc_strategy(shot, strategy, guesses, hit):
-    
+
+    temp = []
     if len(strategy) < 1:
         temp = [shot-1, shot+1, shot-10, shot+10]
     else:
