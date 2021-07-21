@@ -47,15 +47,14 @@ def get_ship(long, occupied):
 
 
 def create_ships(occupied, boats):
-    occupied = []
+    # occupied = []
     ships = []
     boats = [5, 4, 3, 3, 3, 2]
 
     for boat in boats:
         ship, occupied = get_ship(boat, occupied)
         ships.append(ship)
-
-    ships = create_ships(occupied, boats)
+    # ships = create_ships(occupied, boats)
 
     return ships, occupied
 
@@ -65,19 +64,16 @@ def check_boat(b, start, dirn, occupied):
     if dirn == 1:
         for i in range(b):
             boat.append(start - i*10)
-            boat = check_ok(boat, occupied)
     elif dirn == 2:
         for i in range(b):
             boat.append(start + i)
-            boat = check_ok(boat, occupied)
     elif dirn == 3:
         for i in range(b):
             boat.append(start + i*10)
-            boat = check_ok(boat, occupied)
     elif dirn == 4:
         for i in range(b):
             boat.append(start - i)
-            boat = check_ok(boat, occupied)
+    boat = check_ok(boat, occupied)
 
     return boat
 
