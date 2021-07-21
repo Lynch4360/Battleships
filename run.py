@@ -81,7 +81,7 @@ def check_boat(b, start, dirn, occupied):
 def create_boats(occupied, boats):
     # occupied = []
     ships = []
-    boats = [5, 4, 3, 3, 3, 2]
+    # boats = [5, 4, 3, 3, 3, 2]
     for b in boats:
         boat = [-1]
         while boat[0] == -1:
@@ -208,36 +208,107 @@ def calc_strategy(shot, strategy, guesses, hit):
     return cand
 
 
+def get_shot(guesses):
+
+    ok = "n"
+    while ok == "n":
+        try:
+            shot = input("Please enter your guess: ")
+            shot = int(shot)
+            if shot < 0 or shot > 99:
+                print("incorrect number, please try again")
+            elif shot in guesses:
+                print("incorrect number, used before")
+            else:
+                ok = "y"
+                break
+        except:
+            print("Incorrect entry - please enter again")
+
+    return shot
+
+
 def check_if_empty_2(list_of_lists):
     return all([not elem for elem in list_of_lists])
 
 
+# before game
+hit1 = []
+miss1 = []
+sink1 = []
+guesses1 = []  
+missed1 = 0
+strategy1 = []
+occupied1 = []
+occupied2 = []
+hit2 = []
+miss2 = []
+sink2 = []
+guesses2 = []  
+missed2 = 0
+strategy2 = []
 
-occupied = []
-hit = []
-miss = []
-sink = []
-guesses = []
-boats = []
+battleships = [5, 4, 3, 3, 2, 2]
+# game amount of ships
+# computer creates a board for player 1
+ships1, occupied1 = create_boats(occupied1, battleships)
+# user creates the board for player 2 - show board
+ships2, occupied2 = create_ships(occupied2, battleships)
+show_board_c(occupied2)
 
-ships, occupied = create_boats(occupied, boats)
-show_board_c(occupied)
-strategy = []
-
+# loop
 for i in range(80):
-    shot, guesses = get_shot_comp(guesses, strategy)
-    ships, hit, miss, comp, missed = check_shot(shot, ships, hit, miss, sink)
-    show_board(hit, miss, sink)
-    if missed == 1:
-        strategy = calc_strategy(shot, strategy, guesses, hit)
-    elif missed == 2:
-        strategy = []
-    elif len(strategy) > 0:
-        strategy.pop(0)
 
-    if check_if_empty_2(ships):
-        print("end of game", i)
+    # player shoots
+    guesses1 = hit1 + miss1 + sink1
+    shot1 = get_shot(guesses1)
+    ships1, hit1, miss1, sink1, missed1 = check_shot(shot1, ships1, hit1, miss1, sink1)
+    show_board(hit1, miss1, sink1)
+# repeat until ships empty
+    if check_if_empty_2(ships1):
+        print("end of game - winner in", i)
         break
+# computer shoots
 
-show_board_c(occupied)
-show_board(hit, miss, sink)
+    shot2, guesses2 = get_shot_comp(guesses2, strategy2)
+    ships2, hit2, miss2, sink2, missed2 = check_shot(shot2, ships2, hit2, miss2, sink2)
+    show_board(hit2, miss2, sink2)
+
+    if missed2 == 1:
+        tactics2 = calc_strategy(shot2, strategy2, guesses2, hit2)
+    elif missed2 == 2:
+        strategy2 = []
+    elif len(strategy2) > 0:
+        strategy2.pop(0)
+
+    if check_if_empty_2(ships2):
+        print("end of game - computer wins", i)
+#         break
+# occupied = []
+# hit = []
+# miss = []
+# sink = []
+# guesses = []
+# boats = []
+
+# ships, occupied = create_boats(occupied, boats)
+# show_board_c(occupied)
+# strategy = []
+
+# for i in range(80):
+#     shot, guesses = get_shot_comp(guesses, strategy)
+#     ships, hit, miss, comp, missed = check_shot(shot, ships, hit, miss, sink)
+#     show_board(hit, miss, sink)
+#     if missed == 1:
+#         strategy = calc_strategy(shot, strategy, guesses, hit)
+#     elif missed == 2:
+#         strategy = []
+#     elif len(strategy) > 0:
+#         strategy.pop(0)
+
+#     if check_if_empty_2(ships):
+#         print("end of game", i)
+#         break
+
+# show_board_c(occupied)
+# show_board(hit, miss, sink)
