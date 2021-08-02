@@ -4,6 +4,9 @@ import random
 
 def check_ok(boat, occupied):
 
+    """
+    
+    """
     boat.sort()
     for i in range(len(boat)):
         num = boat[i]
@@ -97,6 +100,15 @@ def create_boats(occupied, boats):
 
 
 def show_board_c(occupied):
+    """
+    Creates the game board for the computer.
+
+    Inside for loop creates the row and the outside for loop
+    prints each row.
+    
+    Keyword Arguments:
+    occupied -- A number on the board that has been taken by a battleship
+    """
     print("            Battleships       ")
     print("     0  1  2  3  4  5  6  7  8  9")
 
@@ -132,6 +144,17 @@ def get_shot_comp(guesses, strategy):
 
 
 def show_board(hit, miss, sink):
+    """
+    Creates the game board for the player.
+
+    Inside for loop creates the row and the outside for loop
+    prints each row.
+    
+    Keyword Arguments:
+    hit -- A number on the board that has hit one of the battleships
+    miss -- A number on the board that has missed one of the battleships
+    sink -- A number on the board that has completed a battleship and has sunk it
+    """
     print("            Battleships       ")
     print("     0  1  2  3  4  5  6  7  8  9")
 
