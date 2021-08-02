@@ -138,7 +138,7 @@ def show_board_c(occupied):
     Keyword Arguments:
     occupied -- A number on the board that has been taken by a battleship
     """
-    print("This is where you placed your ships, remember your guesses will be on top and the AI guesses on the bottom")
+    print("This is where you placed your ships,/nHit = o, Miss = X, Sink Boat = O/nRemember your guesses will be on top and the AI guesses on the bottom")
     print("            Your Battleships      ")
     print("     0  1  2  3  4  5  6  7  8  9")
 
@@ -254,39 +254,38 @@ def calc_strategy(shot, strategy, guesses, hit):
     """
     temp = []
     if len(strategy) < 1:
-        temp = [shot+1]
-        for num in [2, 3, 4, 5, 6, 7, 8]:
-            if shot-num not in hit:
-                temp.append(shot+num)
-                break
-    # elif there is a hit in the number to the right
-    elif shot+1 in hit:
-        temp = [shot-1]
-        for num in [2, 3, 4, 5, 6, 7, 8]:
-            if shot+num not in hit:
-                temp.append(shot+num)
-                break
-    # elif there is a hit in the number above
-    elif shot-10 in hit:
-        temp = [shot+10]
-        for num in [20, 30, 40, 50, 60, 70, 80]:
-            if shot-num not in hit:
-                temp.append(shot-num)
-                break
-    # elif there is a shot in the number below
-    elif shot+10 in hit:
-        temp = [shot-10]
-        for num in [20, 30, 40, 50, 60, 70, 80]:
-            if shot+num not in hit:
-                temp.append(shot+num)
-                break
+        temp = [shot-1, shot+1, shot-10, shot+10]
+    else:
+        if shot-1 in hit:
+            temp = [shot+1]
+            for num in [2, 3, 4, 5, 6, 7, 8]:
+                if shot-num not in hit:
+                    temp.append(shot-num)
+                    break
+        elif shot+1 in hit:
+            temp = [shot-1]
+            for num in [2, 3, 4, 5, 6, 7, 8]:
+                if shot+num not in hit:
+                    temp.append(shot+num)
+                    break
+        if shot-10 in hit:
+            temp = [shot+10]
+            for num in [20, 30, 40, 50, 60, 70, 80]:
+                if shot-num not in hit:
+                    temp.append(shot-num)
+                    break
+        elif shot+10 in hit:
+            temp = [shot-10]
+            for num in [20, 30, 40, 50, 60, 70, 80]:
+                if shot+num not in hit:
+                    temp.append(shot+num)
+                    break
     # if the values in temporary list are on the board and not in guesses
     # then the values can be placed in this candidate list
-    cand = []
+    cand =[]
     for i in range(len(temp)):
         if temp[i] not in guesses and temp[i] < 100 and temp[i] > -1:
             cand.append(temp[i])
-
     # this list is then shuffled
     random.shuffle(cand)
     # the shuffled list is then returned
@@ -382,3 +381,4 @@ for i in range(80):
 
     if check_if_empty_2(ships2):
         print("end of game - computer wins in", i)
+        break
