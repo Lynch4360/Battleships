@@ -3,9 +3,12 @@ import random
 
 
 def check_ok(boat, occupied):
-
     """
-    
+    Iterates through the coordinates of the boat and checks to see if placement is valid, also checks to see if boat coordinates is running off edges of board, returns 'boat'.
+
+    Keyword arguments:
+    boat -- A boat in the game made by the user's input
+    occupied -- A number on the board that has been taken by a battleship
     """
     boat.sort()
     for i in range(len(boat)):
@@ -63,6 +66,16 @@ def create_ships(occupied, boats):
 
 
 def check_boat(b, start, dirn, occupied):
+    """
+    Checks to make sure the boat is being placed correctly
+    on the board. and returns the value for boat.
+
+    Keyword arguments:
+    b -- The length of the boat
+    start -- Where the boat starts
+    dirn -- The direction the boat is facing
+    occupied -- A number on the board that has been taken by a battleship
+    """
     boat = []
     if dirn == 1:
         for i in range(b):
@@ -82,9 +95,14 @@ def check_boat(b, start, dirn, occupied):
 
 
 def create_boats(occupied, boats):
-    # occupied = []
+    """
+    When we have not gotten a valid boat the loop continues and when we do it gets appended to the ships list
+
+    Keyword arguments:
+    occupied -- A number on the board that has been taken by a battleship
+    boats -- A list of the differant sized boats in the game
+    """
     ships = []
-    # boats = [5, 4, 3, 3, 3, 2]
     for b in boats:
         boat = [-1]
         while boat[0] == -1:
@@ -105,7 +123,7 @@ def show_board_c(occupied):
 
     Inside for loop creates the row and the outside for loop
     prints each row.
-    
+
     Keyword Arguments:
     occupied -- A number on the board that has been taken by a battleship
     """
