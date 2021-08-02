@@ -149,11 +149,11 @@ def show_board(hit, miss, sink):
 
     Inside for loop creates the row and the outside for loop
     prints each row.
-    
+
     Keyword Arguments:
     hit -- A number on the board that has hit one of the battleships
     miss -- A number on the board that has missed one of the battleships
-    sink -- A number on the board that has completed a battleship and has sunk it
+    sink -- A number on the board that has completed a battleship
     """
     print("            Battleships       ")
     print("     0  1  2  3  4  5  6  7  8  9")
@@ -176,7 +176,20 @@ def show_board(hit, miss, sink):
 
 
 def check_shot(shot, ships, hit, miss, sink):
+    """
+    Checks to see what the shot is, 
+    If shot is in the ships list it will either be a hit or a sink,
+    if the shot is not in the boat it will be a miss.
 
+    Correctly appends or removes the shot accordingly
+
+    Keyword arguments:
+    shot -- The player's guesses that are valid
+    ships -- A list containing the ships in the game
+    hit -- A number on the board that has hit one of the battleships
+    miss -- A number on the board that has missed one of the battleships
+    sink -- A number on the board that has completed a battleship
+    """
     missed = 0
     for i in range(len(ships)):
         if shot in ships[i]:
@@ -232,21 +245,28 @@ def calc_strategy(shot, strategy, guesses, hit):
 
 
 def get_shot(guesses):
+    """
+    Take in input for user's shot.
+    Check to see if the user's shot is valid, if it is return the shot
+    if it is incorrect, give correct error message.
 
+    Keyword arguments:
+    guesses -- previous guesses made by user
+    """
     ok = "n"
     while ok == "n":
         try:
-            shot = input("Please enter your guess: ")
+            shot = input("Please enter a guess between 0 and 99: ")
             shot = int(shot)
             if shot < 0 or shot > 99:
-                print("incorrect number, please try again")
+                print("incorrect number. Make sure your guess is between 0 and 99.")
             elif shot in guesses:
-                print("incorrect number, used before")
+                print("incorrect number, you have already tried that one!")
             else:
                 ok = "y"
                 break
         except:
-            print("Incorrect entry - please enter again")
+            print("Invalid entry - please try again!")
 
     return shot
 
@@ -289,7 +309,7 @@ for i in range(80):
     show_board(hit1, miss1, sink1)
 # repeat until ships empty
     if check_if_empty_2(ships1):
-        print("end of game - winner in", i)
+        print("End of game - You are the winner in", i, "shots")
         break
 # computer shoots
 
