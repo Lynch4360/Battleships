@@ -50,6 +50,7 @@ def get_ship(long, occupied):
         print("Now please enter your coordinates one at a time for ship length", long)
         for i in range(long):
             boat_num = input("Enter coordinate. ")
+            print("")
             ship.append(int(boat_num))
         # check that ship
         ship = check_ok(ship, occupied)
@@ -71,7 +72,7 @@ def create_ships(occupied, boats):
     boats -- A list of the different sized boats in the game
     """
     ships = []
-    boats = [5, 4, 3, 3, 3, 2]
+    boats = [5, 4, 3, 3, 3, 2, 2]
 
     for boat in boats:
         ship, occupied = get_ship(boat, occupied)
@@ -138,7 +139,7 @@ def show_board_c(occupied):
     Keyword Arguments:
     occupied -- A number on the board that has been taken by a battleship
     """
-    print("This is where you placed your ships,/nHit = o, Miss = X, Sink Boat = O/nRemember your guesses will be on top and the AI guesses on the bottom")
+    print("This is where you placed your ships, Remember your guesses will be on top and the AI guesses on the bottom")
     print("            Your Battleships      ")
     print("     0  1  2  3  4  5  6  7  8  9")
 
