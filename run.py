@@ -4,19 +4,20 @@ import time
 
 def check_ok(boat, occupied_coordinate):
     """
-    Iterates through the coordinates of the boat and checks
-    to see if placement is valid and if boat coordinates run
-    off edges of board, returns 'boat'.
+    Iterates through the numbers in the boat list and checks
+    to see if the data is valid and if the numbers run
+    off edges of board. It then returns the value of the list.
 
     Args:
-    boat -- A boat in the game made by the user's input
-    occupied_coordinate -- A number on the board that has been taken by
-    a battleship
+    boat -- A list of numbers representing coordinates that have been inputted
+    by the user to creats a boat on the game board
+    occupied_coordinate -- A list that stores numbers on the board that have
+    been inputted by the user to place on the game board
     """
     boat.sort()
     for i in range(len(boat)):
         num = boat[i]
-        # if the boat is trying to place  in occupied area break
+        # if the boat is trying to place in occupied area break
         if num in occupied_coordinate:
             boat = [-1]
             break
@@ -40,21 +41,22 @@ def check_ok(boat, occupied_coordinate):
 
 def get_ship(length_of_boat, occupied_coordinate):
     """
-    Takes input from the user to place ship, checks if placement is valid, if
-    it is store it in ship list.
-    If it is invalid or already used then display error message.
+    Takes input from the user of a number to place a ship on the game board,
+    checks if data is valid, if valid, store it in ship list.
+    If invalid or already in list then display error message.
 
     Args:
-    length_of_boat -- The length of the boats predetermined before game
-    occupied_coordinate -- A number on the board that has been taken
-    by a battleship
+    length_of_boat -- The amount of inputs needed for a user to create a
+    boat on the game board
+    occupied_coordinate -- A list of number on the board that has already been
+    entered to make a ship on the gmae board.
     """
     ok = True
     while ok:
         ship = []
         # ask user to enter coordinate for placement of ship
-        print("Now please enter your coordinates one at a time for ship \
-            length", length_of_boat)
+        print("Now please enter your coordinates one at a time for ship",
+              " length", length_of_boat)
         for i in range(length_of_boat):
             print("")
             boat_num = input("Enter coordinate. ")
@@ -76,9 +78,10 @@ def create_ships(occupied_coordinate, boats):
     Creates a list of ships from the boats list
 
     Args:
-    occupied_coordinate -- A number on the board that has been
-    taken by a battleship
-    boats -- A predetermined list of the different sized boats in the game
+    occupied_coordinate -- A list of number on the board that has already been
+    entered to make a ship on the gmae board.
+    boats -- A list made before inputs are taken that represents the different
+    sized boats in the game
     """
     ships = []
     # predetermined before game start
@@ -94,14 +97,14 @@ def create_ships(occupied_coordinate, boats):
 def check_boat(start_length_of_boat, start, dirn, occupied_coordinate):
     """
     Checks to make sure the boat is being placed correctly
-    on the board. and returns the value for boat.
+    on the board. It then appends to the bopat variable and returns the value.
 
     Args:
     start_length_of_boat -- The predetermined length of the boat
     start -- startng coordinate for boat
-    dirn -- The direction the boat is facing i.e. vertical, horizontol
-    occupied_coordinate -- A number on the board that has been taken
-    by a battleship
+    dirn -- The direction the boat is facing i.e. up, right down left
+    occupied_coordinate -- A list of number on the board that has already been
+    entered to make a ship on the gmae board.
     """
     boat = []
     # checks the 4 directions of boat and appends it to boat list of valid
@@ -130,9 +133,10 @@ def create_boats(occupied_coordinate, boats):
     and when we do it gets appended to the ships list
 
     Args:
-    occupied_coordinate -- A number on the board that has been taken
-    by a battleship
-    boats -- A list of the different sized boats in the game
+    occupied_coordinate -- A list of numbers on the board that has already
+    been entered to make a ship on the game board.
+    boats -- A list made before inputs are taken that represents the different
+    sized boats in the game
     """
     ships = []
     for start_length_of_boat in boats:
@@ -156,11 +160,11 @@ def show_board_c(occupied_coordinate):
     prints each row.
 
     Args:
-    occupied_coordinate -- A number on the board that has been taken
-    by a battleship
+    occupied_coordinate -- A list of numbers on the board that has already
+    been entered to make a ship on the game board.
     """
-    print("This is where you placed your ships, Remember your board will \
-        be on top and the AI board is on the bottom\n")
+    print("This is where you placed your ships, Remember your board will",
+          "be on top and the AI board is on the bottom\n")
     print("            Your Battleships      ")
     print("     0  1  2  3  4  5  6  7  8  9")
 
@@ -179,13 +183,13 @@ def show_board_c(occupied_coordinate):
 def get_shot_comp(guesses, strategy):
     """
     Gets shot from computer, checks to see if there is an intelligent guess
-    available using 'strategy'.
+    available beside a recent hit.
     No intelligent guess, then it attempts to make a random shot.
-    The shot is then compared with previous guesses,
-    If valid then it records the shot.
+    The shot is then appended to the list 'guesses'
 
     Args:
-    guesses -- previous guesses inputted from the user
+    guesses -- A list of numbers that have been entered byu the user since the
+    game started
     """
     ok = "n"
     while ok == "n":
@@ -209,22 +213,22 @@ def instructions(occupied_coordinate):
     Prints out the Game instructions to the user before game starts
 
     Args:
-    occupied_coordinate -- A number on the board that has been taken
-    by a battleship
+    occupied_coordinate -- A list of numbers on the board that has already
+    been entered to make a ship on the game board.
     """
-    print("\rThe Game is simple, Try to find and sink all of the \
-        opponents ships\n before they sink yours\n")
+    print("The Game is simple, Try to find and sink all of the",
+          "opponents ships\n before they sink yours\n")
     time.sleep(3)
-    print("\rEach player will take turns shooting to try and find\
-         the opponents ships\n")
+    print("Each player will take turns shooting to try and find",
+          "the opponents ships\n")
     time.sleep(3)
-    print("\rEach player has 5 Battleships and 80 bullets\n")
+    print("Each player has 5 Battleships and 80 bullets\n")
     time.sleep(3)
-    print("\rThe first player to sink all of the opponents Battleships \
-        will be the winner.\n")
+    print("The first player to sink all of the opponents Battleships",
+          "will be the winner.\n")
     time.sleep(3)
-    print("This is your game grid, ships can be placed vertical or \
-        horizontal. NOT diagonally\n")
+    print("This is your game grid, ships can be placed vertical or",
+          "horizontal. NOT diagonally\n")
     time.sleep(3)
     # print an example game board to the user for clarification
     print("            Your Battleships      ")
@@ -242,26 +246,25 @@ def instructions(occupied_coordinate):
         print(x, " ", row)
 
     time.sleep(3)
-    print("\rAs you can see the board is a 10x10 Grid numbered 0-99\n")
+    print("As you can see the board is a 10x10 Grid numbered 0-99\n")
     time.sleep(3)
-    print("\rThe battleships are differant lengths and can be placed \
-        in different ways.\n")
+    print("The battleships are differant lengths and can be placed",
+          "in different ways.\n")
     time.sleep(3)
-    print("\rAn Example of a ship with the length of 5 is: 10,11,12,13,14\n")
+    print("An Example of a ship with the length of 5 is: 10,11,12,13,14\n")
     time.sleep(3)
-    print("\rThe player would enter one coordinate at a time. 10 then 11\
-         then 12 and so on.\n")
+    print("The player would enter one coordinate at a time. 10 then 11",
+          "then 12 and so on.\n")
     time.sleep(3)
-    print("\rThen they would enter in the next ship of length 4\n")
+    print("Then they would enter in the next ship of length 4\n")
     time.sleep(3)
-    print(
-        "\rAn Example of this would be 80,70,60,50 this ship would be\
-             vertical\n")
+    print("An Example of this would be 80,70,60,50 this ship would be",
+          "vertical\n")
     time.sleep(3)
-    print("On the board an 'x' marks a miss\n An 'o' means you hit \
-        the ship\n And a '0' means that you sunk a Battleship\n")
+    print("On the board an 'x' marks a miss\n An 'o' means you hit",
+          "the ship\n And a '0' means that you sunk a Battleship\n")
     time.sleep(3)
-    print("\rNow you are ready to go to battle!\n")
+    print("Now you are ready to go to battle!\n")
 
 
 def show_board(hit, miss, sink):
@@ -271,9 +274,12 @@ def show_board(hit, miss, sink):
     prints each row.
 
     Args:
-    hit -- A number on the board that has hit one of the battleships
-    miss -- A number on the board that has missed one of the battleships
-    sink -- A number on the board that has completed a battleship
+    hit -- A list of numbers that have been entered by the user that have hit
+    the computer's ships
+    miss -- A list of numbers that have been entered by the user that have not
+    hit one of the computer's ships
+    sink -- A list of numbers that have been the last input by the user that
+    completed one of the computer's ships and sunk it
     """
     print("            Battleships       ")
     print("     0  1  2  3  4  5  6  7  8  9")
@@ -303,11 +309,14 @@ def check_shot(shot, ships, hit, miss, sink):
     Correctly appends or removes the shot accordingly
 
     Args:
-    shot -- The player's recent shot/guess to try and sink the opponents ship
+    shot -- The input made by the user to shoot at the computer's board
     ships -- A list containing the ships in the game after the input from user
-    hit -- A number on the board that has hit one of the battleships
-    miss -- A number on the board that has missed one of the battleships
-    sink -- A number on the board that has completed a battleship
+    hit -- A list of numbers that have been entered by the user that have hit
+    the computer's ships
+    miss -- A list of numbers that have been entered by the user that have not
+    hit one of the computer's ships
+    sink -- A list of numbers that have been the last input by the user that
+    completed one of the computer's ships and sunk it
     """
     missed = 0
     for i in range(len(ships)):
@@ -335,9 +344,10 @@ def calc_strategy(shot, strategy, guesses, hit):
     it then places these guesses into a temp list.
 
     Args:
-    shot -- The input of a coordinate to try and sink a ship
-    strategy -- The amount of hits made by computer to sink a ship
-    guesses -- previous valid coordinates inputted by the user
+    shot -- The input made by the user to shoot at the computer's board
+    strategy -- A list that is only appended if the user has sunk a ship
+    guesses -- A list of numbers that have been entered byu the user since the
+    game started
     """
     temp = []
     if len(strategy) < 1:
@@ -386,7 +396,8 @@ def get_shot(guesses):
     if it is incorrect, give correct error message.
 
     Args:
-    guesses -- previous valid coordinates inputted by the user
+    guesses -- A list of numbers that have been entered byu the user since the
+    game started
     """
     ok = "n"
     while ok == "n":
@@ -394,8 +405,8 @@ def get_shot(guesses):
             shot = input("Please enter a guess between 0 and 99: ")
             shot = int(shot)
             if shot < 0 or shot > 99:
-                print("incorrect number. Make sure your guess is \
-                    between 0 and 99.")
+                print("incorrect number. Make sure your guess is",
+                      "between 0 and 99.")
             elif shot in guesses:
                 print("incorrect number, you have already tried that one!")
             else:
@@ -412,7 +423,7 @@ def check_if_empty_2(list_of_lists):
     Checks if a list of lists is empty
     This was taken from StackOverFlow and was not written by the developer
     """
-    return all([not elem for elem in list_of_lists])
+    return all([not i for i in list_of_lists])
 
 
 # before game starts
