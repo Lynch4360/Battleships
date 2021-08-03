@@ -1,22 +1,22 @@
-from random import randrange
 import random
 import time
 
 
-def check_ok(boat, occupied):
+def check_ok(boat, occupied_coordinate):
     """
     Iterates through the coordinates of the boat and checks
     to see if placement is valid and if boat coordinates run
     off edges of board, returns 'boat'.
 
-    Keyword arguments:
+    Args:
     boat -- A boat in the game made by the user's input
-    occupied -- A number on the board that has been taken by a battleship
+    occupied_coordinate -- A number on the board that has been taken by 
+    a battleship
     """
     boat.sort()
     for i in range(len(boat)):
         num = boat[i]
-        if num in occupied:
+        if num in occupied_coordinate:
             boat = [-1]
             break
         elif num < 0 or num > 99:
@@ -34,64 +34,69 @@ def check_ok(boat, occupied):
     return boat
 
 
-def get_ship(long, occupied):
+def get_ship(length_of_boat, occupied_coordinate):
     """
-    Takes input from the user to place ship, checks if placement is valid, if it is store it in ship list.
+    Takes input from the user to place ship, checks if placement is valid, if 
+    it is store it in ship list.
     If it is invalid or already used then display error message.
 
-    Keyword arguments:
-    long -- The length of the ship
-    occupied -- A number on the board that has been taken by a battleship
+    Args:
+    lengthOfBoat -- The length of the boats predetermined before game
+    occupied_coordinate -- A number on the board that has been taken 
+    by a battleship
     """
     ok = True
     while ok:
         ship = []
         # ask user to enter numbers
-        print("Now please enter your coordinates one at a time for ship length", long)
-        for i in range(long):
+        print("Now please enter your coordinates one at a time for ship length"
+        , length_of_boat)
+        for i in range(length_of_boat):
             print("")
             boat_num = input("Enter coordinate. ")
             print("")
             ship.append(int(boat_num))
         # check that ship
-        ship = check_ok(ship, occupied)
+        ship = check_ok(ship, occupied_coordinate)
         if ship[0] != -1:
-            occupied = occupied + ship
+            occupied_coordinate = occupied_coordinate + ship
             break
         else:
             print("Error - please try again")
 
-    return ship, occupied
+    return ship, occupied_coordinate
 
 
-def create_ships(occupied, boats):
+def create_ships(occupied_coordinate, boats):
     """
     Creates a list of ships from the boats list
 
-    Keyword arguments:
-    occupied -- A number on the board that has been taken by a battleship
+    Args:
+    occupied_coordinate -- A number on the board that has been taken 
+    by a battleship
     boats -- A list of the different sized boats in the game
     """
     ships = []
     boats = [5, 4, 3, 3, 2]
 
     for boat in boats:
-        ship, occupied = get_ship(boat, occupied)
+        ship, occupied_coordinate = get_ship(boat, occupied_coordinate)
         ships.append(ship)
 
-    return ships, occupied
+    return ships, occupied_coordinate
 
 
-def check_boat(b, start, dirn, occupied):
+def check_boat(b, start, dirn, occupied_coordinate):
     """
     Checks to make sure the boat is being placed correctly
     on the board. and returns the value for boat.
 
-    Keyword arguments:
+    Args:
     b -- The length of the boat
     start -- Where the boat starts
     dirn -- The direction the boat is facing
-    occupied -- A number on the board that has been taken by a battleship
+    occupied_coordinate -- A number on the board that has been taken 
+    by a battleship
     """
     boat = []
     if dirn == 1:
@@ -106,41 +111,45 @@ def check_boat(b, start, dirn, occupied):
     elif dirn == 4:
         for i in range(b):
             boat.append(start - i)
-    boat = check_ok(boat, occupied)
+    boat = check_ok(boat, occupied_coordinate)
 
     return boat
 
 
-def create_boats(occupied, boats):
+def create_boats(occupied_coordinate, boats):
     """
     When we have not gotten a valid boat the loop continues
     and when we do it gets appended to the ships list
     Keyword arguments:
-    occupied -- A number on the board that has been taken by a battleship
+    occupied_coordinate -- A number on the board that has been taken 
+    by a battleship
     boats -- A list of the different sized boats in the game
     """
     ships = []
     for b in boats:
         boat = [-1]
         while boat[0] == -1:
-            boat_start = randrange(99)
-            boat_direction = randrange(1, 4)
-            boat = check_boat(b, boat_start, boat_direction, occupied)
+            boat_start = random.randrange(99)
+            boat_direction = random.randrange(1, 4)
+            boat = check_boat(b, boat_start, boat_direction
+            , occupied_coordinate)
         ships.append(boat)
-        occupied = occupied + boat
+        occupied_coordinate = occupied_coordinate + boat
 
-    return ships, occupied
+    return ships, occupied_coordinate
 
 
-def show_board_c(occupied):
+def show_board_c(occupied_coordinate):
     """
     Creates the game board for the computerz.
     Inside for loop creates the row and the outside for loop
     prints each row.
     Keyword Arguments:
-    occupied -- A number on the board that has been taken by a battleship
+    occupied_coordinate -- A number on the board that has been taken 
+    by a battleship
     """
-    print("This is where you placed your ships, Remember your guesses will be on top and the AI guesses on the bottom")
+    print("This is where you placed your ships, Remember your guesses will"
+    " be on top and the AI guesses on the bottom")
     print("            Your Battleships      ")
     print("     0  1  2  3  4  5  6  7  8  9")
 
@@ -149,7 +158,7 @@ def show_board_c(occupied):
         row = ""
         for y in range(10):
             ch = " . "
-            if place in occupied:
+            if place in occupied_coordinate:
                 ch = " o "
             row = row + ch
             place = place + 1
@@ -158,9 +167,11 @@ def show_board_c(occupied):
 
 def get_shot_comp(guesses, strategy):
     """
-    Gets shot from computer, checks to see if there is an intelligent guess available using 'strategy'.
+    Gets shot from computer, checks to see if there is an intelligent guess
+    available using 'strategy'.
     No intelligent guess, then it attempts to make a random shot.
-    Shot is then compared with previous guesses if valid then it makes the shot.
+    The shot is then compared with previous guesses,
+     if valid then it makes the shot.
     Keyword arguments:
     guesses -- previous guessdes made by user
     """
@@ -170,7 +181,7 @@ def get_shot_comp(guesses, strategy):
             if len(strategy) > 0:
                 shot = strategy[0]
             else:
-                shot = randrange(99)
+                shot = random.randrange(99)
             if shot not in guesses:
                 ok = "y"
                 guesses.append(shot)
@@ -181,16 +192,20 @@ def get_shot_comp(guesses, strategy):
     return shot, guesses
 
 
-def instructions(occupied):
-    print("\rThe Game is simple, Try to find and sink all of the opponents ships\n before they sink yours\n")
+def instructions(occupied_coordinate):
+    print("\rThe Game is simple, Try to find and sink all of the opponents"
+    " ships\n before they sink yours\n")
     time.sleep(3)
-    print("\rEach player will take turns shooting to try and find the opponents ships\n")
+    print("\rEach player will take turns shooting to try and find"
+    " the opponents ships\n")
     time.sleep(3)
     print("\rEach player has 5 Battleships and 80 bullets\n")
     time.sleep(3)
-    print("\rThe first player to sink all of the opponents Battleships will be the winner.\n")
+    print("\rThe first player to sink all of the opponents Battleships"
+    " will be the winner.\n")
     time.sleep(3)
-    print("This is your game grid, ships can be placed vertical or horizontal. NOT diagonally\n")
+    print("This is your game grid, ships can be placed vertical or "
+    "horizontal. NOT diagonally\n")
     time.sleep(3)
     print("            Your Battleships      ")
     print("     0  1  2  3  4  5  6  7  8  9")
@@ -200,7 +215,7 @@ def instructions(occupied):
         row = ""
         for y in range(10):
             ch = " . "
-            if place in occupied:
+            if place in occupied_coordinate:
                 ch = " o "
             row = row + ch
             place = place + 1
@@ -209,20 +224,23 @@ def instructions(occupied):
     time.sleep(3)
     print("\rAs you can see the board is a 10x10 Grid numbered 0-99\n")
     time.sleep(3)
-    print("\rThe battleships are differant lengths and can be placed in different ways.\n")
+    print(("\rThe battleships are differant lengths and can be placed"
+            " in different ways.\n")
     time.sleep(3)
     print("\rAn Example of a ship with the length of 5 is: 10,11,12,13,14\n")
     time.sleep(3)
-    print("\rThe player would enter one coordinate at a time. 10 then 11 then 12 and so on.\n")
+    print("\rThe player would enter one coordinate at a time. 10 then 11"
+    " then 12 and so on.\n")
     time.sleep(3)
     print("\rThen they would enter in the next ship of length 4\n")
     time.sleep(3)
-    print("\rAn Example of this would be 80,70,60,50 this ship would be vertical\n")
+    print(
+        "\rAn Example of this would be 80,70,60,50 this ship would be vertical\n")
     time.sleep(3)
-    print("On the board an 'x' marks a miss\n An 'o' means you hit the ship\n And a '0' means that you sunk a Battleship\n")
+    print("On the board an 'x' marks a miss\n An 'o' means you hit "
+    "the ship\n And a '0' means that you sunk a Battleship\n")
     time.sleep(3)
     print("\rNow you are ready to go to battle!\n")
-
 
 
 def show_board(hit, miss, sink):
@@ -353,7 +371,8 @@ def get_shot(guesses):
             shot = input("Please enter a guess between 0 and 99: ")
             shot = int(shot)
             if shot < 0 or shot > 99:
-                print("incorrect number. Make sure your guess is between 0 and 99.")
+                print("incorrect number. Make sure your guess is "
+                "between 0 and 99.")
             elif shot in guesses:
                 print("incorrect number, you have already tried that one!")
             else:
@@ -380,8 +399,8 @@ sink1 = []
 guesses1 = []
 missed1 = 0
 strategy1 = []
-occupied1 = []
-occupied2 = []
+occupied_coordinate1 = []
+occupied_coordinate2 = []
 hit2 = []
 miss2 = []
 sink2 = []
@@ -393,14 +412,14 @@ strategy2 = []
 battleships = [5, 4, 3, 3, 2]
 
 # Game Instructions
-instructions(occupied2)
+instructions(occupied_coordinate2)
 
 # computer creates a board for player 1
-ships1, occupied1 = create_boats(occupied1, battleships)
+ships1, occupied_coordinate1 = create_boats(occupied_coordinate1, battleships)
 
 # user creates the board for player 2 - show board
-ships2, occupied2 = create_ships(occupied2, battleships)
-show_board_c(occupied2)
+ships2, occupied_coordinate2 = create_ships(occupied_coordinate2, battleships)
+show_board_c(occupied_coordinate2)
 
 # loop
 for i in range(80):
