@@ -464,7 +464,7 @@ for i in range(80):
     show_board(hit2, miss2, sink2)
 
     if missed2 == 1:
-        tactics2 = calc_strategy(shot2, strategy2, guesses2, hit2)
+        strategy2 = calc_strategy(shot2, strategy2, guesses2, hit2)
     elif missed2 == 2:
         strategy2 = []
 
