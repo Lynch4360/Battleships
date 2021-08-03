@@ -58,8 +58,9 @@ def get_ship(length_of_boat, occupied_coordinate):
         print("Now please enter your coordinates one at a time for ship",
               " length", length_of_boat)
         for i in range(length_of_boat):
-            print("Enter coordinate. ")
+            print(" ")
             boat_num = input("Enter coordinate. ")
+            print(" ")
             ship.append(int(boat_num))
         # check that ship is valid
         ship = check_ok(ship, occupied_coordinate)
@@ -401,8 +402,9 @@ def get_shot(guesses):
     ok = "n"
     while ok == "n":
         try:
-            print("Please enter a guess between 0 and 99: ")
+            print(" ")
             shot = input("Please enter a guess between 0 and 99: ")
+            print(" ")
             shot = int(shot)
             if shot < 0 or shot > 99:
                 print("incorrect number. Make sure your guess is",
