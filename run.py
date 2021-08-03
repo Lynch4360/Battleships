@@ -403,8 +403,8 @@ def get_shot(guesses):
     while ok == "n":
         try:
             print(" ")
-            shot = input("Please enter a guess between 0 and 99: ")
             print(" ")
+            shot = input("Please enter a guess between 0 and 99: ")
             shot = int(shot)
             if shot < 0 or shot > 99:
                 print("incorrect number. Make sure your guess is",
