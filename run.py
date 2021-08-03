@@ -1,5 +1,6 @@
 from random import randrange
 import random
+import time
 
 
 def check_ok(boat, occupied):
@@ -42,13 +43,13 @@ def get_ship(long, occupied):
     long -- The length of the ship
     occupied -- A number on the board that has been taken by a battleship
     """
-    print("Now you must enter the coordinates for your ship.\nYou will do this one coordinate at a time.\nType in your number. Press enter and then type in the next coordinate.\nRemember Battleships can only be placed vertical and horizontal.\nSome Examples are\n [11,12,13,14,] [66,65,64] [20,30,40,50] [77,67,57]")
     ok = True
     while ok:
         ship = []
         # ask user to enter numbers
         print("Now please enter your coordinates one at a time for ship length", long)
         for i in range(long):
+            print("")
             boat_num = input("Enter coordinate. ")
             print("")
             ship.append(int(boat_num))
@@ -72,7 +73,7 @@ def create_ships(occupied, boats):
     boats -- A list of the different sized boats in the game
     """
     ships = []
-    boats = [5, 4, 3, 3, 3, 2, 2]
+    boats = [5, 4, 3, 3, 2]
 
     for boat in boats:
         ship, occupied = get_ship(boat, occupied)
@@ -133,7 +134,7 @@ def create_boats(occupied, boats):
 
 def show_board_c(occupied):
     """
-    Creates the game board for the computer.
+    Creates the game board for the computerz.
     Inside for loop creates the row and the outside for loop
     prints each row.
     Keyword Arguments:
@@ -178,6 +179,50 @@ def get_shot_comp(guesses, strategy):
             print("Incorrect entry - please enter again")
 
     return shot, guesses
+
+
+def instructions(occupied):
+    print("\rThe Game is simple, Try to find and sink all of the opponents ships\n before they sink yours\n")
+    time.sleep(3)
+    print("\rEach player will take turns shooting to try and find the opponents ships\n")
+    time.sleep(3)
+    print("\rEach player has 5 Battleships and 80 bullets\n")
+    time.sleep(3)
+    print("\rThe first player to sink all of the opponents Battleships will be the winner.\n")
+    time.sleep(3)
+    print("This is your game grid, ships can be placed vertical or horizontal. NOT diagonally\n")
+    time.sleep(3)
+    print("            Your Battleships      ")
+    print("     0  1  2  3  4  5  6  7  8  9")
+
+    place = 0
+    for x in range(10):
+        row = ""
+        for y in range(10):
+            ch = " . "
+            if place in occupied:
+                ch = " o "
+            row = row + ch
+            place = place + 1
+        print(x, " ", row)
+
+    time.sleep(3)
+    print("\rAs you can see the board is a 10x10 Grid numbered 0-99\n")
+    time.sleep(3)
+    print("\rThe battleships are differant lengths and can be placed in different ways.\n")
+    time.sleep(3)
+    print("\rAn Example of a ship with the length of 5 is: 10,11,12,13,14\n")
+    time.sleep(3)
+    print("\rThe player would enter one coordinate at a time. 10 then 11 then 12 and so on.\n")
+    time.sleep(3)
+    print("\rThen they would enter in the next ship of length 4\n")
+    time.sleep(3)
+    print("\rAn Example of this would be 80,70,60,50 this ship would be vertical\n")
+    time.sleep(3)
+    print("On the board an 'x' marks a miss\n An 'o' means you hit the ship\n And a '0' means that you sunk a Battleship\n")
+    time.sleep(3)
+    print("\rNow you are ready to go to battle!\n")
+
 
 
 def show_board(hit, miss, sink):
@@ -345,7 +390,10 @@ missed2 = 0
 strategy2 = []
 
 # game amount of ships
-battleships = [5, 4, 3, 3, 2, 2]
+battleships = [5, 4, 3, 3, 2]
+
+# Game Instructions
+instructions(occupied2)
 
 # computer creates a board for player 1
 ships1, occupied1 = create_boats(occupied1, battleships)
