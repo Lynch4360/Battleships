@@ -58,8 +58,8 @@ def get_ship(length_of_boat, occupied_coordinate):
         print("Now please enter your coordinates one at a time for ship",
               " length", length_of_boat)
         for i in range(length_of_boat):
+            print("Enter coordinate. ")
             boat_num = input("Enter coordinate. ")
-            print("")
             ship.append(int(boat_num))
         # check that ship is valid
         ship = check_ok(ship, occupied_coordinate)
@@ -226,8 +226,8 @@ def instructions(occupied_coordinate):
     print("The first player to sink all of the opponents Battleships",
           "will be the winner.\n")
     time.sleep(3)
-    print("This is your game grid, ships can be placed vertical or",
-          "horizontal. NOT diagonally\n")
+    print("This is your game grid, ships can only be placed vertical or",
+          "horizontal.\n")
     time.sleep(3)
     # print an example game board to the user for clarification
     print("            Your Battleships      ")
@@ -401,6 +401,7 @@ def get_shot(guesses):
     ok = "n"
     while ok == "n":
         try:
+            print("Please enter a guess between 0 and 99: ")
             shot = input("Please enter a guess between 0 and 99: ")
             shot = int(shot)
             if shot < 0 or shot > 99:
