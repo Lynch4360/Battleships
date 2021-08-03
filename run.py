@@ -402,8 +402,6 @@ def get_shot(guesses):
     ok = "n"
     while ok == "n":
         try:
-            print(" ")
-            print(" ")
             shot = input("Please enter a guess between 0 and 99: ")
             shot = int(shot)
             if shot < 0 or shot > 99:
