@@ -58,7 +58,6 @@ def get_ship(length_of_boat, occupied_coordinate):
         print("Now please enter your coordinates one at a time for ship",
               " length", length_of_boat)
         for i in range(length_of_boat):
-            print("")
             boat_num = input("Enter coordinate. ")
             print("")
             ship.append(int(boat_num))
