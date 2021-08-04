@@ -2,7 +2,7 @@
 
 [Main README.md file](README.md)
 
-[View Website in GitHub Pages](https://github.com/Lynch4360/Battleships)
+[View Github Repository](https://github.com/Lynch4360/Battleships)
 
 ## Testing
 
@@ -24,12 +24,14 @@
 
 ### User stories Testing
 
-- User stories testing has been lined out in the README.md file.
+- User stories testing has been lined out in the [README.md](README.md) file.
 
 - The features directly answer the user stories and all were completed and testing was met.
 
 ## Further Testing
 
-1. Fellow students in Code Institute Slack channel were asked to review the code and no issues were found.
+1. Fellow students in the Code Institute Slack channel were asked to review the code and no issues were found.
 
-2. I have ran through the app myself countless times and no futher issues were found.
+2. I have ran through the app myself multiple times and no futher issues were found that have not been outlined.
+
+3. Debugging and testing was done frequently during the creating of this app.

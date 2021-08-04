@@ -2,7 +2,7 @@
 
 [View the live project here](https://battleships-ms3.herokuapp.com/)
 
-Battleships is command line app based on the game that has roots going back to 1931. Where two player's place ships on a game board and take turns trying to find and sink their opponent's fleet.
+Battleships is a command line app based on the game that has roots going back to 1931. Where two players place ships on a game board and take turns trying to find and sink their opponent's fleet.
 
 The current state of the game has no GUI and is terminal only. It is played against an AI only, and does not offer two player in this current state.
 
@@ -17,12 +17,13 @@ The current state of the game has no GUI and is terminal only. It is played agai
 
 ## User Experience (UX)
 
-### User stories - as a user I want to be able to:
+### User stories - As a user I want to be able to:
     1. Read clear instructions on what the game is and how to play it.
 
-    2. Be able to see my game board and the opponent's game board at the same time.
+    2. See my game board and the opponent's game board at the same time.
     Just like the traitional battleships board game.
-    3. Tell if a shot entered by user has already been entered before.
+
+    3. Tell if a shot that has been entered by user has been entered before.
 
     4. See how many moves I won the game in.
 
@@ -33,17 +34,17 @@ The current state of the game has no GUI and is terminal only. It is played agai
 ## Features
 
 ### Existing Features
-  F1 [Instructions](images/instruction.jpg.png)
+  F1 [Instructions](assets/readme/images/instruction.jpg)
 
-  F2 [Game Board](images/gameBoard.jpg.png)
+  F2 [Game Board](assets/readme/images/gameBoard.jpg.png)
 
-  F3 [Repeated shot detection](images/repeatShotDetection.jpg)
+  F3 [Repeated shot detection](assets/readme/images/repeatShotDetection.jpg)
 
-  F4 [Victory message](images/winCondition.jpg.png)
+  F4 [Victory message](assets/readme/images/winCondition.jpg.png)
 
-  F5 [Defeat message](images/defeat.jpg.png)
+  F5 [Defeat message](assets/readme/images/defeat.jpg.png)
 
-  F6 [Run Program again button](images/runButtonAgain.jpg.png)
+  F6 [Run Program again button](assets/readme/images/runButtonAgain.jpg.png)
   
 ### How these features support User Stories
 
@@ -53,7 +54,7 @@ The current state of the game has no GUI and is terminal only. It is played agai
 
 - __Appropriate UI__
 
-As this application uses the command line interface it is not very user friendly. An obvious future feature of this application would be to build a better user-interface layer using HTML/CSS and possibly JavaScript to make it much more intuitive to use. A Python GUI could also be another viable option.
+This application uses the command line interface it is not very user friendly. An obvious future feature of this application would be to build a better user-interface layer using HTML/CSS and possibly JavaScript to make it much more intuitive to use. A Python GUI could also be another viable option.
 
 - __Controlled Instructions__
 
@@ -70,26 +71,27 @@ You can find More about WebSockets [here](https://en.wikipedia.org/wiki/WebSocke
 
 - __Smarter AI__
 
-The route taken in this application concerning the computers moves is an AI that hunts for a ship once it gets a hit. Quite a simple bot. A future feature that could be implemented would be an AI that works from a heat map of the board showing the most accurate guess. This would make the AI finish in about 20 less moves according to some resources online. A video that I recommend for anyone interested is [here](https://www.youtube.com/watch?v=tgcwSkKWJ9E)
+The route taken in this application concerning the computers moves is an AI that hunts for a ship once it gets a hit. Quite a simple bot. A future feature that could be implemented would be an AI that works from a heat map of the board showing the most accurate guess. This would make the AI finish in about 20 less moves according to some resources online. A video that I recommend for anyone interested in this concept is [here](https://www.youtube.com/watch?v=tgcwSkKWJ9E)
 
 - __Leaderboard__
 
-Another future feature that given more time could have been implemented in this version would be a leaderboard system that prints how many moves it took you to win and stores it in google sheets using an API.
+Another future feature that given more time could have been implemented in this version would be a leaderboard system that prints how many moves it took you to win and stores it in Google sheets using an API.
 
 ## Design
 
 ### Flow charts
 The diagrams below outline the high level flow of control within the application:
-This is published and the link should always work, if by chance it is not you can find the image of it here
+This is the published flowchart
 
   [Main Game Flowchart](https://lucid.app/publicSegments/view/a7c401ff-150b-4823-8fd1-355c72700131/image.jpeg)
 
-This is published and the link should always work, if by chance it is not you can find the image of it [here](assets/readme/images/flowchart.jpg.png)
+If the puplished link does not work, you can find the image of it [here](assets/readme/images/flowchart.jpg.png)
 
 ## Technologies Used
 
 ### Languages Used
-
+ 
+-   [Markdown](https://en.wikipedia.org/wiki/Markdown)
 -   [Python 3.8.10](https://www.python.org/)
 
 ### Frameworks & Programs Used
@@ -97,6 +99,7 @@ This is published and the link should always work, if by chance it is not you ca
 -   [Git:](https://git-scm.com/) was used for version control by utilising the Gitpod terminal to commit to Git and Push to GitHub.
 -   [GitHub:](https://github.com/) is used as the respository for the projects code after being pushed from Git.
 -   [Heroku:](https://heroku.com) is used to deploy the application and provides an enviroment in which the code can execute
+-   [Lucid Chart](https://lucid.app/documents#/dashboard) was used to create the flow chart for this app.
 
 ## Testing
 
@@ -133,12 +136,12 @@ To clone this project into Gitpod you will need:
 2. Use the Chrome browser 
 
 Then follow these steps:
-1. Install the [Gitpod Browser Extentions for Chrome](https://www.gitpod.io/docs/browser-extension/)
+1. Install the [Gitpod Browser Extensions for Chrome](https://www.gitpod.io/docs/browser-extension/)
 2. After installation, restart the browser
-3. Log into [Gitpod](https://gitpod.com) with your gitpod account.
+3. Log into [Gitpod](https://www.gitpod.io/) with your gitpod account.
 4. Navigate to the [Project GitHub repository](https://github.com/Lynch4360/Battleships)
 5. Click the green "Gitpod" button in the top right corner of the respository
-6. This will trigger a new gitpod workspace to be created from the code in github where you can work locally.
+6. This will trigger a new gitpod workspace to be created from the code in Github where you can work locally.
 
 To work on the project code within a local IDE such as Jetbrains, VScode, Pycharm etc:
 1. Follow this link to the [Project GitHub repository](https://github.com/Lynch4360/Battleships).
@@ -162,13 +165,13 @@ Further reading and troubleshooting on cloning a repository from GitHub [here](h
     <summary>Steps followed to deploy</summary>
 
 - Log in to [Heroku](https://heroku.com/), create an account if necessary.
-  - From the Heroku dashboard, click the Create new app button. For a new account an icon will be visible on screen to allow you to Create an app, otherwise a link to this function is located under the New dropdown menu at the top right of the screen.
+  - From the Heroku dashboard, click the 'Create new app' button. For a new account an icon will be visible on screen to allow you to Create an app, otherwise a link to this function is located under the New dropdown menu at the top right of the screen.
   - On the Create New App page, enter a unique name for the application and select region. Then click Create app.
   - You will then be brought to the Application Configuration page for your new app. Changes are needed here on the Settings and Deploy tabs.
-  - Next, scroll down the Settings page to Buildpacks.  Click Add buildpack, select Python from the pop up window and click on Save changes. Click Add buildpack again, select Node.js from the pop up window and click on Save changes. It is important that the buildpacks are listed Python first, then Node.js beneath.
-  - Click on the Deploy tab on the Application Configuration page.
+  - Next, scroll down the Settings page to Buildpacks.  Click 'Add buildpack', select Python from the pop up window and click on 'Save changes'. Click Add buildpack again, select Node.js from the pop up window and click on 'Save changes'. It is important that the buildpacks are listed Python first, then Node.js beneath.
+  - Click on the 'Deploy tab' on the Application Configuration page.
   - Select GitHub as the Deployment Method and if prompted, confirm that you want to connect to GitHub.  Enter the name of the github
-repository (the one used for this project is https://github.com/Lynch4360/Battleships) and click on Connect to link up the Heroku app to the GitHub repository code.
+repository (the one used for this project is https://github.com/Lynch4360/Battleships) and click on 'Connect' to link up the Heroku app to the GitHub repository code.
   - Scroll down the page and choose to either Automatically Deploy each time changes are pushed to GitHub, or Manually deploy - for this project
 Automatic Deploy was selected.
   - The application can be run from the Application Configuration page by clicking on the Open App button.
