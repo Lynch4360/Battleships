@@ -19,22 +19,32 @@ The current state of the game has no GUI and is terminal only. It is played agai
 
 ### User stories - as a user I want to be able to:
     1. Read clear instructions on what the game is and how to play it.
-    2. Be able to see my game board and the opponent's game board at the same time. Just like the traitional battleships board game.
+
+    2. Be able to see my game board and the opponent's game board at the same time.
+    Just like the traitional battleships board game.
     3. Tell if a shot entered by user has already been entered before.
+
     4. See how many moves I won the game in.
+
     5. See how many moves I lost the game against the computer in.
+
     6. Play the game again after I am finished.
 
 ## Features
 
 ### Existing Features
-    F1. [Instructions]()
-    F2. [Game Board]()
-    F3. [Repeated shot detection]()
-    F4. [Victory message]()
-    F5. [Defeat message]()
-    F6. [Run Program again button]()
-    
+  F1 [Instructions](images/instruction.jpg.png)
+
+  F2 [Game Board](images/gameBoard.jpg.png)
+
+  F3 [Repeated shot detection](images/repeatShotDetection.jpg)
+
+  F4 [Victory message](images/winCondition.jpg.png)
+
+  F5 [Defeat message](images/defeat.jpg.png)
+
+  F6 [Run Program again button](images/runButtonAgain.jpg.png)
+  
 ### How these features support User Stories
 
 - The user stories above are number 1-6 and the existing features are listed F1-F6. These are directly linked to eachother and F1 corresponds with Number 1 in the user stories section.
