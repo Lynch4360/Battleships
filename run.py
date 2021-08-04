@@ -248,23 +248,26 @@ def instructions(occupied_coordinate):
     time.sleep(3)
     print("As you can see the board is a 10x10 Grid numbered 0-99\n")
     time.sleep(3)
-    print("The battleships are differant lengths and can be placed",
-          "in different ways.\n")
+    print("Remember, Battleships are differant sizes, and can be placed",
+          "vertically and horizontally\n")
     time.sleep(3)
-    print("An Example of a ship with the length of 5 is: 10,11,12,13,14\n")
+    print("An example of a ship with 5 coordinates is: 10,11,12,13,14\n",
+          "This ship would be positioned horizontally",
+          " on the second row of the grid")
     time.sleep(3)
     print("The player would enter one coordinate at a time. 10 then 11",
           "then 12 and so on.\n")
     time.sleep(3)
-    print("Then they would enter in the next ship of length 4\n")
+    print("Then they would enter in the next ship that has 4 coordinates\n")
     time.sleep(3)
     print("An Example of this would be 80,70,60,50 this ship would be",
-          "vertical\n")
+          "positioned vertically\n")
     time.sleep(3)
-    print("On the board an 'x' marks a miss\n An 'o' means you hit",
-          "the ship\n And a '0' means that you sunk a Battleship\n")
+    print("On the board an 'x' marks a miss\n An 'o' marks a hit",
+          "on the opponent's ship\n And a '0' means that you sunk",
+          " a Battleship\n")
     time.sleep(3)
-    print("Now you are ready to go to battle!\n")
+    print("Now you are ready to sink the opponent's fleet!\n")
 
 
 def show_board(hit, miss, sink):
