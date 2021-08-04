@@ -218,18 +218,18 @@ def instructions(occupied_coordinate):
     """
     print("The Game is simple, Try to find and sink all of the",
           "opponents ships\n before they sink yours\n")
-    time.sleep(3)
+    time.sleep(2)
     print("Each player will take turns shooting to try and find",
           "the opponents ships\n")
-    time.sleep(3)
+    time.sleep(2)
     print("Each player has 5 Battleships and 80 bullets\n")
-    time.sleep(3)
+    time.sleep(2)
     print("The first player to sink all of the opponents Battleships",
           "will be the winner.\n")
-    time.sleep(3)
+    time.sleep(2)
     print("This is your game grid, ships can only be placed vertical or",
           "horizontal.\n")
-    time.sleep(3)
+    time.sleep(2)
     # print an example game board to the user for clarification
     print("            Your Battleships      ")
     print("     0  1  2  3  4  5  6  7  8  9")
@@ -245,28 +245,28 @@ def instructions(occupied_coordinate):
             place = place + 1
         print(x, " ", row)
 
-    time.sleep(3)
+    time.sleep(2)
     print("As you can see the board is a 10x10 Grid numbered 0-99\n")
-    time.sleep(3)
+    time.sleep(2)
     print("Remember, Battleships are differant sizes, and can be placed",
           "vertically and horizontally\n")
-    time.sleep(3)
+    time.sleep(2)
     print("An example of a ship with 5 coordinates is: 10,11,12,13,14\n",
           "This ship would be positioned horizontally",
           " on the second row of the grid")
-    time.sleep(3)
+    time.sleep(2)
     print("The player would enter one coordinate at a time. 10 then 11",
           "then 12 and so on.\n")
-    time.sleep(3)
+    time.sleep(2)
     print("Then they would enter in the next ship that has 4 coordinates\n")
-    time.sleep(3)
+    time.sleep(2)
     print("An Example of this would be 80,70,60,50 this ship would be",
           "positioned vertically\n")
-    time.sleep(3)
+    time.sleep(2)
     print("On the board an 'x' marks a miss\n An 'o' marks a hit",
           "on the opponent's ship\n And a '0' means that you sunk",
           " a Battleship\n")
-    time.sleep(3)
+    time.sleep(2)
     print("Now you are ready to sink the opponent's fleet!\n")
 
 
