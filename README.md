@@ -80,11 +80,11 @@ Another future feature that given more time could have been implemented in this 
 
 ### Flow charts
 The diagrams below outline the high level flow of control within the application:
+This is published and the link should always work, if by chance it is not you can find the image of it here
 
-<details>
-  <summary>Diagrams</summary>
-  ![Main Game Flowchart]()
-</details>
+  [Main Game Flowchart](https://lucid.app/publicSegments/view/a7c401ff-150b-4823-8fd1-355c72700131/image.jpeg)
+
+This is published and the link should always work, if by chance it is not you can find the image of it [here](assets/readme/images/flowchart.jpg.png)
 
 ## Technologies Used
 
@@ -110,7 +110,7 @@ Testing information can be found i seperate [TESTING.md](TESTING.md) file
 This  worked fine when testing within the Gitpod enviroment, but did not work when the application was deployed to Heroku. No error messages or warnings were displayed when the application was run on the Heroku platform, to patch up this problem and make it less debilitating for the user experience. I placed an empty print statement before the input.
 This did not fix it entirely but the app is still usable.
 
-The reference to this code is: [Print statement Fix]()
+The reference to this code is: [Print statement Fix](assets/readme/images/printScreenFix.jpg.png)
 
 ## Deployment
 
@@ -136,12 +136,12 @@ Then follow these steps:
 1. Install the [Gitpod Browser Extentions for Chrome](https://www.gitpod.io/docs/browser-extension/)
 2. After installation, restart the browser
 3. Log into [Gitpod](https://gitpod.com) with your gitpod account.
-4. Navigate to the [Project GitHub repository]()
+4. Navigate to the [Project GitHub repository](https://github.com/Lynch4360/Battleships)
 5. Click the green "Gitpod" button in the top right corner of the respository
 6. This will trigger a new gitpod workspace to be created from the code in github where you can work locally.
 
 To work on the project code within a local IDE such as Jetbrains, VScode, Pycharm etc:
-1. Follow this link to the [Project GitHub repository]().
+1. Follow this link to the [Project GitHub repository](https://github.com/Lynch4360/Battleships).
 2. Under the repository name, click "Clone or download".
 3. In the Clone with HTTPs section, copy the clone URL for the repository. 
 4. In your local IDE open the terminal.
@@ -177,11 +177,18 @@ Automatic Deploy was selected.
  </details>
 
  ## Credits
+  Inspiration has been taken from exterior sources in the creating of this app.
+
+  CS Students YouTube channel has been a very informative source and has influenced this project's inception drastically you can find the Video [here](https://www.youtube.com/watch?v=MgJBgnsDcF0)
+
+  Some Concepts spoken about in this video even though written in JavaScript have been used in this project. For that, many thanks to Ania Kubów and her video on Battleships found [here](https://www.youtube.com/watch?v=U64vIhh0TyM&t=12s)
+
 
  ### Code
+  As stated above there has been information taken from some sources for the project but in all the code was written by the developer. One piece that has been used from a Stack Overflow Post is [here](assets/stackOverflowFunc.jpg.png)
 
 
 
  ### Acknowledgements
 
- - Thank you to my mentor Brian Macharia for his help and feedback throughout this projectt. He has given me countless tips and multiple resources to help meimprove my codig and my testing. Thanks also to my tutor Miguel Martinez for the facillitator sessions and classes on Python and Object Orientated Programming.
+ - Thank you to my mentor Brian Macharia, for his help and feedback throughout this project. He has given me countless tips and multiple resources to help me improve my coding and my testing. Thanks also to my tutor Miguel Martinez for the facillitator sessions and classes on Python and Object Orientated Programming.
